@@ -4,8 +4,10 @@ from mpl_toolkits.mplot3d import Axes3D
 
 def plot_function_3d():
     # Define the function
-    def f(x1, x2):
-        return 0.1 * x1**2 + x2**2
+    # def f(x1, x2):
+    #     return 0.1 * x1**2 + x2**2
+    def f(w, theta_b):
+        return -np.exp(-((w**2) / 8) - ((theta_b**2) / 1))
 
     # Generate grid of x1 and x2 values
     x1 = np.linspace(-10, 10, 400)
@@ -104,7 +106,7 @@ def gradient_descent(func, alpha, init_x, epsilon=1e-6, numerical_gradient=True,
 
 # Deep Groove Function
 def deep_groove_function(x):
-    return 0.1 * x[0]**2 + x[1]**2
+    return -np.exp(-((x[0]**2) / 8) - ((x[1]**2) / 1))
 
 # Plotting function
 def plot_topology(func, path1, path2, title1, title2, iter1, iter2):
@@ -138,7 +140,7 @@ def plot_topology(func, path1, path2, title1, title2, iter1, iter2):
 # Parameters for optimization
 L = 1
 dimension = 2
-init_x = np.array([5.0, 5.0])
+init_x = np.array([3.0, 3.0])
 
 # Nesterov's method
 nesterov_x, nesterov_path, nesterov_iters = nesterov_descent(deep_groove_function, L, dimension, init_x=init_x, epsilon=1e-6)
