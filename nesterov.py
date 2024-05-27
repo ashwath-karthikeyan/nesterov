@@ -77,7 +77,7 @@ def plot_topology(func, path1, path2, title1, title2):
     for ax, path, title in zip(axes, [path1, path2], [title1, title2]):
         ax.contourf(X, Y, Z, levels=10, cmap='viridis')
         ax.plot(np.array(path)[:, 0], np.array(path)[:, 1], 'ro-', label='Path')
-        ax.set_title(title)
+        ax.set_title(f"{title}\nIterations: {len(path) - 1}")
         ax.set_xlabel('x1')
         ax.set_ylabel('x2')
         ax.legend()
