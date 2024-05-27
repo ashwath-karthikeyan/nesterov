@@ -4,7 +4,7 @@ from mpl_toolkits.mplot3d import Axes3D
 
 # Function definitions
 def f(x1, x2):
-    return -np.exp(-((x1**2) / 8) - ((x2**2) / 1))
+    return -np.exp(-((x1**2) / 20) - ((x2**2) / 5))
 
 def deep_groove_function(x):
     return f(x[0], x[1])
@@ -76,16 +76,15 @@ def plot_topology(func, path1, path2, title1, title2):
     fig, axes = plt.subplots(1, 2, figsize=(14, 7))
     for ax, path, title in zip(axes, [path1, path2], [title1, title2]):
         ax.contourf(X, Y, Z, levels=10, cmap='viridis')
-        ax.plot(np.array(path)[:, 0], np.array(path)[:, 1], 'ro-', label='Path')
+        ax.plot(np.array(path)[:, 0], np.array(path)[:, 1], 'ro-', linewidth=0.01)
         ax.set_title(f"{title}\nIterations: {len(path) - 1}")
         ax.set_xlabel('x1')
         ax.set_ylabel('x2')
-        ax.legend()
     plt.show()
 
 # Parameters for optimization
 L, dimension = 1, 2
-init_x = np.array([3.0, 3.0])
+init_x = np.array([5.0,5.0])
 
 # Perform optimizations
 nesterov_x, nesterov_path = nesterov_descent(deep_groove_function, L, dimension, init_x)
